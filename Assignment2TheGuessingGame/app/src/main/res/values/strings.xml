@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Assignment2 The Guessing Game</string>
+    <string name="welcome_banner">Welcome to Number Guess!</string>
+    <string name="results_page">It took this many guesses</string>
+</resources>
