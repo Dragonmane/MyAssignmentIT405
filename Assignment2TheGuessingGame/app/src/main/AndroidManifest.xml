@@ -10,5 +10,12 @@ package="com.example.ted1g.assignment2theguessinggame">
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
+    <activity android:name=".GuessingActivity"
+        android:label="Guess the number"
+        android:theme="@style/AppTheme" />
+
+    <activity android:name=".ResultsActivity"
+        android:label="Show the resultes"
+        android:theme="@style/AppTheme" />
 </application>
 </manifest>

@@ -12,53 +12,50 @@ import static com.example.ted1g.assignment2theguessinggame.R.layout.activity_gue
 
 public class GuessingActivity extends AppCompatActivity
 {
+        EditText editText;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(activity_guessing);
-
-        final Button checkNumber = (Button) findViewById(R.id.checkNumber);
-        Bundle extras = this.getIntent().getExtras();
-        int upperLimit = extras.getInt("upperLimit");
-
-        final int randomNumber = (int)(Math.random() * upperLimit + 1);
-
-        checkNumber.setOnClickListener(new View.OnClickListener()
+        @Override
+        protected void onCreate(Bundle savedInstanceState)
         {
-            int clickCount = 0;
+            super.onCreate(savedInstanceState);
+            setContentView(activity_guessing);
 
-            @Override
-            public void onClick(View view)
+            final Button checkNumber = (Button) findViewById(R.id.checkNumber);
+            Bundle extras = this.getIntent().getExtras();
+            //int upperLimit = extras.getInt("upperLimit");
+
+            //final int randomNumber = (int) (Math.random() * upperLimit + 1);
+
+            checkNumber.setOnClickListener(new View.OnClickListener()
             {
-                EditText enterNumberEditText = (EditText)GuessingActivity.this.findViewById(R.id.enterNumber);
-                int enterNumber = Integer.parseInt(enterNumberEditText.getText().toString());
+                int clickCount = 0;
 
-                String message;
-
-                if(enterNumber == randomNumber)
+                @Override
+                public void onClick(View view)
                 {
-                    Toast.makeText(GuessingActivity.this, "Congratulations! You guessed the correct number.", Toast.LENGTH_SHORT).show();
+                    EditText enterNumberEditText = (EditText) GuessingActivity.this.findViewById(R.id.enterNumber);
+                    int enterNumber = Integer.parseInt(enterNumberEditText.getText().toString());
+
+                    String message;
+
+                    if (enterNumber == randomNumber) {
+                        Toast.makeText(GuessingActivity.this, "Congratulations! You guessed the correct number.", Toast.LENGTH_SHORT).show();
+                    } else if (enterNumber < randomNumber) {
+                        Toast.makeText(GuessingActivity.this, "The number is larger than your choice", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(GuessingActivity.this, "The number is smaller than your choice.", Toast.LENGTH_SHORT).show();
+                    }
+
+                    clickCount = clickCount + 1;
+
+
                 }
-                else if (enterNumber < randomNumber)
-                {
-                Toast.makeText(GuessingActivity.this, "The number is larger than your choice", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(GuessingActivity.this, "The number is smaller than your choice.", Toast.LENGTH_SHORT).show();
-                }
+            });
 
-                clickCount = clickCount + 1;
-
-
-            }
-        });
-
-        Intent intent = new Intent(GuessingActivity.this, ResultsActivity.class);
-        intent.putExtra("counting clicks", clickCount);
-        startActivity(intent);
-    }
+//            Intent intent = new Intent(GuessingActivity.this, ResultsActivity.class);
+//            intent.putExtra("counting clicks", clickCount);
+//            startActivity(intent);
+        }
 }
 
 
