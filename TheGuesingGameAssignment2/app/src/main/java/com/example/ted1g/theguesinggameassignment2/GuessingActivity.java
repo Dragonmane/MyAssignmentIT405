@@ -15,50 +15,49 @@ public class GuessingActivity extends AppCompatActivity
 {
     Button buttonCheck;
     TextView enterNumber;
-    Random numRandom = new Random();
-
-    int hideRandom = numRandom.nextInt(20) +1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guessing);
-
         final Button buttonCheck = (Button)findViewById(R.id.buttonCheck);
-        Bundle extras = this.getIntent().getExtras();
-        int upperLimit = extras.getInt("upperLimit");
-
-        final int randomNumber = (int)(Math.random()*upperLimit + 1);
 
         buttonCheck.setOnClickListener(new View.OnClickListener()
         {
+            Random rand = new Random();
+            int number = rand.nextInt(20) + 1;
             int clickCount = 0;
-
+            String myString = String.valueOf(number);
 
             @Override
             public void onClick(View view)
             {
-                EditText enterNumberEditText = (EditText) findViewById(R.id.enterNumber);
-                int enterNumber = Integer.parseInt(enterNumberEditText.getText().toString());
-
+               EditText enterNumberEditText = (EditText) findViewById(R.id.enterNumber);
+               int enterNumber = Integer.parseInt(enterNumberEditText.getText().toString());
+                Toast.makeText(GuessingActivity.this, "This is the number " + myString, Toast.LENGTH_SHORT).show();
+                clickCount++;
                 String message;
 
-                if (enterNumber == randomNumber)
+
+                if (enterNumber == number)
                 {
                     Toast.makeText(GuessingActivity.this, "Congratulations! You guessed the correct number", Toast.LENGTH_SHORT).show();
+                    //clickCount = clickcount + 1;
+                    Toast.makeText(GuessingActivity.this, "This is how many clicks it took " + clickCount, Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(GuessingActivity.this, ResultsActivity.class);
                     intent.putExtra("clicks", clickCount);
+                    startActivity(intent);
                 }
-                else if (enterNumber < randomNumber)
+                else if (enterNumber > number)
                 {
                     Toast.makeText(GuessingActivity.this, "To high, please pick a number that is smaller", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(GuessingActivity.this, "To low, please pick a higher number", Toast.LENGTH_SHORT).show();
                 }
 
-                clickCount = clickCount + 1;
+                //clickCount = clickCount + 1;
             }
         });
     }

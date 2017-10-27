@@ -21,6 +21,7 @@ public class GuessingActivity extends AppCompatActivity
             setContentView(activity_guessing);
 
             final Button checkNumber = (Button) findViewById(R.id.checkNumber);
+            if(getIntent() != null && getIntent().hasExtra("upperLimit"))
             Bundle extras = this.getIntent().getExtras();
             //int upperLimit = extras.getInt("upperLimit");
 
