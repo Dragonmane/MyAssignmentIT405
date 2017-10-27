@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class ResultsActivity extends AppCompatActivity {
 
@@ -11,6 +12,10 @@ public class ResultsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
+        Bundle extras = getIntent().getExtras();
+
+        TextView showClicks = (TextView)findViewById(R.id.number_guess);
+        showClicks.setText(extras.getInt(showClicks, clickCount));
     }
 
     public void startOver(View view)

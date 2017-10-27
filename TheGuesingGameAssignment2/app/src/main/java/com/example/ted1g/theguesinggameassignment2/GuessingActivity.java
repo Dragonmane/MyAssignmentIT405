@@ -35,7 +35,7 @@ public class GuessingActivity extends AppCompatActivity
             {
                EditText enterNumberEditText = (EditText) findViewById(R.id.enterNumber);
                int enterNumber = Integer.parseInt(enterNumberEditText.getText().toString());
-                Toast.makeText(GuessingActivity.this, "This is the number " + myString, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(GuessingActivity.this, "This is the number " + myString, Toast.LENGTH_SHORT).show();
                 clickCount++;
                 String message;
 
@@ -44,7 +44,7 @@ public class GuessingActivity extends AppCompatActivity
                 {
                     Toast.makeText(GuessingActivity.this, "Congratulations! You guessed the correct number", Toast.LENGTH_SHORT).show();
                     //clickCount = clickcount + 1;
-                    Toast.makeText(GuessingActivity.this, "This is how many clicks it took " + clickCount, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(GuessingActivity.this, "This is how many clicks it took " + clickCount, Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(GuessingActivity.this, ResultsActivity.class);
                     intent.putExtra("clicks", clickCount);
@@ -53,11 +53,11 @@ public class GuessingActivity extends AppCompatActivity
                 else if (enterNumber > number)
                 {
                     Toast.makeText(GuessingActivity.this, "To high, please pick a number that is smaller", Toast.LENGTH_SHORT).show();
-                } else {
+                }
+                else
+                {
                     Toast.makeText(GuessingActivity.this, "To low, please pick a higher number", Toast.LENGTH_SHORT).show();
                 }
-
-                //clickCount = clickCount + 1;
             }
         });
     }
