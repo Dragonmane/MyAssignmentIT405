@@ -15,7 +15,7 @@ public class ResultsActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         TextView showClicks = (TextView)findViewById(R.id.number_guess);
-        //showClicks.setText(extras.getInt("clickCount"));
+        showClicks.setText(extras.getInt("clicks", 0));
     }
 
     public void startOver(View view)
