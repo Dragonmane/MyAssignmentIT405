@@ -26,7 +26,7 @@ public class GuessingActivity extends AppCompatActivity
         buttonCheck.setOnClickListener(new View.OnClickListener()
         {
             Random rand = new Random();
-            int number = rand.nextInt(20) + 1;
+            int number =  rand.nextInt(20) + 1;
             int clickCount = 0;
             String myString = String.valueOf(number);
 
