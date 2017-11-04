@@ -1,5 +1,11 @@
 package com.example.ted1g.theguesinggameassignment2;
 
+/**
+ * Created by Ted Ginn
+ * 11/1/2017
+ * This activity starts the guessing game
+ */
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +21,7 @@ public class LandingActivity extends AppCompatActivity {
 
     public void onStartClick(View view)
     {
+        //sends the user to the guesing activity
         Intent intent = new Intent(getApplicationContext(), GuessingActivity.class);
         startActivity(intent);
     }

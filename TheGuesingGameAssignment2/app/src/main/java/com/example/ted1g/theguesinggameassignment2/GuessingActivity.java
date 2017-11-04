@@ -1,5 +1,11 @@
 package com.example.ted1g.theguesinggameassignment2;
 
+/**
+ * Created by Ted Ginn
+ * 11/1/2017
+ * This activity checks the number inputted and counts the clicks
+ */
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,8 +32,10 @@ public class GuessingActivity extends AppCompatActivity
         buttonCheck.setOnClickListener(new View.OnClickListener()
         {
             Random rand = new Random();
+            //sets the random number between 1 and 20
             int number =  rand.nextInt(20) + 1;
             int clickCount = 0;
+            //this turns the number into a string value to be sent through the intent
             String myString = String.valueOf(number);
 
             @Override
@@ -36,6 +44,7 @@ public class GuessingActivity extends AppCompatActivity
                EditText enterNumberEditText = (EditText) findViewById(R.id.enterNumber);
                int enterNumber = Integer.parseInt(enterNumberEditText.getText().toString());
                 //Toast.makeText(GuessingActivity.this, "This is the number " + myString, Toast.LENGTH_SHORT).show();
+                //this increments one each time the button is clicked
                 clickCount++;
                 String message;
 
