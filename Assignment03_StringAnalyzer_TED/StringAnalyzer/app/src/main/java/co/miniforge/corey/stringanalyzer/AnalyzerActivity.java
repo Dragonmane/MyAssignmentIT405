@@ -1,5 +1,11 @@
 package co.miniforge.corey.stringanalyzer;
 
+/**
+ * Created by Ted Ginn
+ * 11/1/2017
+ * This class analyzes the phrase that is inputted in the start of the app
+ */
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,7 +45,9 @@ public class AnalyzerActivity extends AppCompatActivity {
         bindData();
     }
 
-    public void locateViews() {
+    public void locateViews()
+    {
+        //these puts the analyed items into textviews
         this.messageTextView = (TextView) findViewById(R.id.messageTextView);
         this.characterCount = (TextView) findViewById(R.id.characterCount);
         this.wordCount = (TextView) findViewById(R.id.wordCount);
@@ -51,20 +59,24 @@ public class AnalyzerActivity extends AppCompatActivity {
     }
 
     public void getIntentData(){
-        if(getIntent().hasExtra(InputActivity.intentTag)){
+        if(getIntent().hasExtra(InputActivity.intentTag))
+        {
+            //this gets the message from the input activity
             this.message = getIntent().getStringExtra(InputActivity.intentTag);
 
             //Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void bindData(){
+    public void bindData()
+    {
         messageTextView.setText(message);
 
+        //this sets the counts to their format, digital or string
         characterCount.setText(String.format("Character Count: %d", textUtil.getTextCharacterCount()));
         wordCount.setText(String.format("Word Count: %d", textUtil.getWordCount()));
         uniqueWords.setText(String.format("Unique Words: %d", textUtil.getUniqueWords()));
-        longestWord.setText(String.format("Longest word: %d", textUtil.getLongestWord()));
+        longestWord.setText(String.format("Longest word: %s", textUtil.getLongestWord()));
         uniqueCharacters.setText(String.format("Unique Characters: %d", textUtil.getUniqueCharacters()));
         specialCharactersCount.setText(String.format("Special Characters: %d", textUtil.getSpecialCharacterCount()));
     }
