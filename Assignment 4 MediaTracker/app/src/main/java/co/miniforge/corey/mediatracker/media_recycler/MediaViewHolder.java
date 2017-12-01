@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import co.miniforge.corey.mediatracker.MediaDetailActivity;
 import co.miniforge.corey.mediatracker.MediaItemDetailActivity;
 import co.miniforge.corey.mediatracker.MyListActivity;
 import co.miniforge.corey.mediatracker.R;
@@ -46,7 +47,9 @@ public class MediaViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 //TODO: Create a new activity with this object's data
-
+                Intent intent = new Intent(context, MediaDetailActivity.class);
+                intent.putExtra(MyListActivity.mediaExtra, mediaItem.toJson().toString());
+                context.startActivity(intent);
                 //Hint: mediaItem.toJson().toString() && context.startActivity);
             }
         });
